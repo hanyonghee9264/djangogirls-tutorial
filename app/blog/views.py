@@ -2,15 +2,38 @@ import os
 
 from django.http import HttpResponse
 from django.template.loader import render_to_string
-from django.shortcuts import render
+# from django.shortcuts import render
+from .models import Post
+
 
 def post_list(request):
     """..."""
-    # 경로에 해당하는 HTML파일을 문자열로 로드해줌
-    # html = render_to_string('blog/post_list.html')
-    # # 가져온 문자열을 돌려주기
-    # return HttpResponse(html)
-    return render(request, 'blog/post_list.html')
+    ...
+
+    posts = Post.objects.all()
+    print(posts)
+    # Post instance에서 title속성에 접근가능
+    # HttpResponse에
+    #
+    # 글 목록<br>
+    # - 격전 참여시..<br>
+    # - 부정행위..<br>
+    # - PBE..<br>
+    #
+    # 위 텍스트를 넣어서 리턴
+
+result = ''
+for post in Post.objects.all():
+    result += '{}<br>'.format(post.title)
+    return HttpResponse(result)
+
+# def post_list(request):
+#     """..."""
+#     # 경로에 해당하는 HTML파일을 문자열로 로드해줌
+#     # html = render_to_string('blog/post_list.html')
+#     # # 가져온 문자열을 돌려주기
+#     # return HttpResponse(html)
+#     return render(request, 'blog/post_list.html')
 
 # def post_list(request):
 #     """
