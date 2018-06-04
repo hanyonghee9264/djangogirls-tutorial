@@ -25,7 +25,7 @@ def post_list(request):
 result = ''
 for post in Post.objects.all():
     result += '{}<br>'.format(post.title)
-    return HttpResponse(result)
+    # return HttpResponse(result)
 
 def post_list(request):
     posts = Post.objects.all()
@@ -39,8 +39,8 @@ def post_list(request):
     # return render(request, 'blog/post_list.html', context)
     return render(
         request=request,
-        template_name='blog/post_list.html'
-    context = context
+        template_name='blog/post_list.html',
+        context = context,
     )
 
 # def post_list(request):
