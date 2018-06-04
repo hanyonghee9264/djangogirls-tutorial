@@ -2,13 +2,15 @@ import os
 
 from django.http import HttpResponse
 from django.template.loader import render_to_string
+from django.shortcuts import render
 
 def post_list(request):
     """..."""
     # 경로에 해당하는 HTML파일을 문자열로 로드해줌
-    html = render_to_string('blog/post_list.html')
-    # 가져온 문자열을 돌려주기
-    return HttpResponse(html)
+    # html = render_to_string('blog/post_list.html')
+    # # 가져온 문자열을 돌려주기
+    # return HttpResponse(html)
+    return render(request, 'blog/post_list.html')
 
 # def post_list(request):
 #     """
