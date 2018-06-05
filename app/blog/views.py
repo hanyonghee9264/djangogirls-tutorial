@@ -40,8 +40,17 @@ def post_list(request):
     return render(
         request=request,
         template_name='blog/post_list.html',
-        context = context,
+        context=context,
     )
+
+
+def post_detail(request, post_id):
+    post = Post.objects.get(id=post_id)
+    context = {
+        'post': post,
+    }
+    # post_detail view function이 올바르게 동작하는 html을 작성해
+    return render(request, 'blog/post_detail.html', context)
 
 # def post_list(request):
 #     """..."""
