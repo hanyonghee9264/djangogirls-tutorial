@@ -52,6 +52,11 @@ def post_detail(request, post_id):
     # post_detail view function이 올바르게 동작하는 html을 작성해
     return render(request, 'blog/post_detail.html', context)
 
+def post_create(request):
+    # title
+    # text
+    return render(request, 'blog/post_create.html')
+
 # def post_list(request):
 #     """..."""
 #     # 경로에 해당하는 HTML파일을 문자열로 로드해줌
