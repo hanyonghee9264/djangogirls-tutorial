@@ -4,9 +4,12 @@
     {% for post in posts %}
     <div class="card mb-4">
         <div class="card-body">
-            <h5 class="card-title">published: {{ post.id }}</h5>
+
+            <!--post-detail이라는 이름을 가지는 urls.py의 url에-->
+            <!--하나의 인수를 사용(post.id)해서 해당하는 URL을 만들어준다 -->
+            <h5 class="card-title"><a href="{% url 'post-detail' post.id %}">[{{post.id}}] {{ post.title }}</a></h5>
             <h6 class="card-subtitle text-muted mb-3 text-right">published: {{ post.title }}</h6>
-            <p class="card-text">{{ post.text|truncatechars:100}}</p>
+            <p class="card-text">{{ post.text|linebreaksbr|truncatechars:100}}</p>
         </div>
     </div>
     {% endfor %}

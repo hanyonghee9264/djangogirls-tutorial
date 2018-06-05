@@ -3,7 +3,7 @@
 {% block content %}
     <div class="card mb-4">
         <div class="card-body">
-            <h5 class="card-title">published: {{ post.id }}</h5>
+            <h5 class="card-title">[{{post.id}}] {{ post.title }}    {{ post.published_date }}</h5>
             <h6 class="card-subtitle text-muted mb-3 text-right">published: {{ post.title }}</h6>
             <p class="card-text">{{ post.text|linebreaksbr}}</p>
         </div>
