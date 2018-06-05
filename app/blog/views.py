@@ -92,4 +92,9 @@ def post_delete(request, post_id):
     # post_id에 해당하는 Post인스턴스에서
     # delete()를 호출해서 DB에서 삭제
     # 이후 post-list(url name)로 redirect
+    if request.method == 'POST':
+        post = Post.objects.get(id=post_id)
+        post.delete()
+        return redirect('post-list')
+
     return HttpResponse('post_delete view function')
