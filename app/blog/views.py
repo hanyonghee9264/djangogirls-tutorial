@@ -1,8 +1,8 @@
 import os
 
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.template.loader import render_to_string
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Post
 
 
@@ -28,7 +28,7 @@ for post in Post.objects.all():
     # return HttpResponse(result)
 
 def post_list(request):
-    posts = Post.objects.all()
+    posts = Post.objects.order_by('-id')
     context = {
         'posts': posts,
     }
@@ -60,17 +60,21 @@ def post_create(request):
         # request.user에 있는 User인스턴스(로그인한 유저)속성을 사용해서
         # 새 Post인스턴스를 생성
         # HttpResponse를 사용해 새로 생성된 인스턴스의 id, title, text정보를 출력(string)
-        post = Post.objects,create(
+        post = Post.objects.create(
             author=request.user,
             title=request.POST['title'],
             text=request.POST['text'],
         )
-        return HttpResponse('id: {}, title: {}, text: {}, author: {}'.format(
-            post.id,
-            post.title,
-            post.text,
-            post.author,
-        ))
+        # HTTP Redirection을 보낼 URL
+        #   http://localhost:8000/
+        #   / 로 시작하면 절대경로, 절대경로의 시작은 도메인
+        return redirect('post-list')
+        # return HttpResponse('id: {}, title: {}, text: {}, author: {}'.format(
+        #     post.id,
+        #     post.title,
+        #     post.text,
+        #     post.author,
+        # ))
     else:
         return render(request, 'blog/post_create.html')
 
