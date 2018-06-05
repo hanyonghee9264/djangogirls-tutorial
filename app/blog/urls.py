@@ -2,7 +2,7 @@ from django.conf.urls import url
 
 
 # from blog.views import post_list
-from .views import post_list, post_detail, post_create
+from .views import post_list, post_detail, post_create, post_delete
 urlpatterns = [
     # url의 첫 번째 인자: 매치될 URL정규표현식
     # url의 두 번째 인자: view function
@@ -13,6 +13,7 @@ urlpatterns = [
     # 아래 url함수의 두 번째 인자로 전달
     #   (함수호출 아님)
     url(r'^$', post_list, name='post-list'),
-    url(r'^(\d+)/', post_detail, name='post-detail'),
-    url(r'^write/', post_create, name='post-create'),
+    url(r'^(\d+)/$', post_detail, name='post-detail'),
+    url(r'^(\d+)/delete/$', post_delete, name='post-delete'),
+    url(r'^write/$', post_create, name='post-create'),
 ]

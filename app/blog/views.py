@@ -78,51 +78,18 @@ def post_create(request):
     else:
         return render(request, 'blog/post_create.html')
 
-# def post_list(request):
-#     """..."""
-#     # 경로에 해당하는 HTML파일을 문자열로 로드해줌
-#     # html = render_to_string('blog/post_list.html')
-#     # # 가져온 문자열을 돌려주기
-#     # return HttpResponse(html)
-#     return render(request, 'blog/post_list.html')
 
-# def post_list(request):
-#     """
-#     first/
-#         first_file.txt
-#         second/
-#             second_file.txt
-#             third/
-#                 module.py
-#                 fourth/
-#                     fourth_file.txt
-#
-#     module.py에서
-#     0. 현재 경로
-#         os.path.abspath(__file__)
-#
-#     1. third/ 폴더의 경로
-#         os.path.dirname(<현재경로>)
-#
-#     1-1. second/ 폴더의 경로
-#         os.path.dirname(<third폴더의 경로>)
-#
-#     2. second/second_file.txt의 경로
-#         os.path.join(<second폴더의 경로>, 'second_file.txt')
-#
-#     3. fourth/ 폴더의 경로
-#         os.path.join(<현재경로>, 'fourth')
-#
-#     4. fourth/fourth_file.txt의 경로
-#         os.path.join(<현재경로>, 'fourth', 'fourth_file.txt')
-#     :param request:
-#     :return:
-#     """
-    # cur_file_path = os.path.abspath(__file__)
-    # blog_dir_path = os.path.dirname(cur_file_path)
-    # app_dir_path = os.path.dirname(blog_dir_path)
-    # templates_dir_path = os.path.join(app_dir_path, 'templates')
-    # blog_template_file_path = os.path.join(templates_dir_path, 'blog', 'post_list.html')
-    # print(blog_template_file_path)
-    # html = open(blog_template_file_path, 'rt').read()
-    # return HttpResponse(html)
+def post_delete(request, post_id):
+    # 1, 연결되는 URL
+    #   ex1) localhost:8000/3/delete/
+    #   ex2) localhost:8000/35/delete
+
+    # 2. 템플릿을 사용하지 않음 (render하는 경우가 없음)
+
+    # view function의 동작
+    # 1. 오로지 request.method가 'POST'일 때만 동작
+    #    (request.method가
+    # post_id에 해당하는 Post인스턴스에서
+    # delete()를 호출해서 DB에서 삭제
+    # 이후 post-list(url name)로 redirect
+    return HttpResponse('post_delete view function')
